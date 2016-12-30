@@ -1,12 +1,9 @@
 package main;
 
-import java.util.Scanner;
-
 public class Board {
 	private static final int MAX_SIZE = 11;
 	// max size should increase !
 	private static final int MIN_SIZE = 4;
-	public static Scanner sc = new Scanner(System.in);
 
 	String[][] board;
 
@@ -14,7 +11,7 @@ public class Board {
 		System.out.println("what kind of board do you want?");
 		System.out.println("s-square");// may be rectangle form of board..
 		String[] boards = { "s", "o" };
-		String temp = sc.next();
+		String temp = Main.sc.next();
 		for (int i = 0; i < boards.length; i++) {
 			if (temp.startsWith(boards[i])) {
 				temp = boards[i];
@@ -32,7 +29,7 @@ public class Board {
 			int size;
 			do {
 				System.out.println("what board size do you want?(between " + MIN_SIZE + " and " + MAX_SIZE + ")");
-				size = sc.nextInt();
+				size = Main.sc.nextInt();
 			} while (size < MIN_SIZE || size > MAX_SIZE);
 			board = new String[size + 2][size + 1];
 			setBasicBoard(board);
