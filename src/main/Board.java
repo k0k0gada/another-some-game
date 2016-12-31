@@ -1,7 +1,7 @@
 package main;
 
 public class Board {
-	private static final int MAX_SIZE = 11;
+	private static final int MAX_SIZE = 15;
 	// max size should increase !
 	private static final int MIN_SIZE = 4;
 
