@@ -97,7 +97,7 @@ public class Player {
 						continue;
 					} else {
 						nameOK = false;
-						System.out.println("the character " + c + " is not allowed!try again!");
+						System.out.println("the name " + c + " is not allowed!try again!");
 						break;
 					}
 				}
@@ -120,5 +120,9 @@ public class Player {
 		} while (n < MIN_PLAYERS || n > MAX_PLAYERS);
 		Main.sc.nextLine();
 		return n;
+	}
+
+	public void setStartLocation() {
+		
 	}
 }

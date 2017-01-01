@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 import players.Player;
@@ -22,8 +23,26 @@ public class Game {
 		playersSign = new TreeSet<Player>(new comparatorSign());
 		playersName = new TreeSet<Player>(new comparatorName());
 		setPlayers();
-		board = new Board();
-		// board=Board.boardSelection();
+		if (Board.boards.isEmpty()) {
+			board = new Board();
+		} else {
+			System.out.println("choose (n/nb)new board or (number)already existing one:");
+			Board.showAvailableBoards();
+			System.out.println("new board");
+			String temp = Main.sc.nextLine();
+			int n;
+			if (temp.length() > 0 && Character.isDigit(temp.charAt(0))) {
+				n = temp.charAt(0);
+				if (Board.boards.size() > 9 && temp.length() > 1 && Character.isDigit(temp.charAt(1))) {
+					n = n * 10 + temp.charAt(1);
+					if (Board.boards.size() > 99 && temp.length() > 2 && Character.isDigit(temp.charAt(2))) {
+						n = n * 10 + temp.charAt(2);
+					}
+				}
+			} else if (temp.length() == 0 || temp.startsWith("n") || temp.startsWith("nb")) {
+				board = new Board();
+			}
+		} // board=Board.boardSelection();
 	}
 
 	private void setPlayers() {
@@ -76,6 +95,13 @@ public class Game {
 			mainMenu();
 			break;
 
+		}
+	}
+
+	public void setStartLocations() {
+		for (Iterator<Player> it = players.iterator(); it.hasNext();) {
+			Player pl = (Player) it.next();
+			pl.setStartLocation();
 		}
 	}
 }

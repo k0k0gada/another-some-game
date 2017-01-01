@@ -1,11 +1,13 @@
 package main;
 
+import java.util.ArrayList;
+
 public class Board {
 	private static final int MAX_SIZE = 15;
 	// max size should increase !
 	private static final int MIN_SIZE = 4;
-
-	String[][] board;
+	static ArrayList<Board> boards = new ArrayList<>();
+	private String[][] board;
 
 	public Board() {
 		System.out.println("what kind of board do you want?");
@@ -35,6 +37,20 @@ public class Board {
 			setBasicBoard(board);
 			showBoard();
 		}
+		Board.boards.add(this);
+	}
+
+	@Override
+	public String toString() {
+		return "[board size=" + (board.length - 2) + " X " + (board[0].length - 1) + "]\n";
+	}
+
+	public static void showAvailableBoards() {
+		System.out.println("\nboards:");
+		for (int i = 0; i < boards.size(); i++) {
+			System.out.println((i + 1) + boards.get(i).toString());
+		}
+		System.out.println();
 	}
 
 	public void showBoard() {

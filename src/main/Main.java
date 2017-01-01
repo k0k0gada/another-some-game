@@ -1,10 +1,11 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
-
+	static ArrayList<Game> games = new ArrayList<Game>();
 	public static Scanner sc = new Scanner(System.in);
 	HashSet<Board> boards;
 
@@ -31,6 +32,8 @@ public class Main {
 
 	public static void play() {
 		Game game = new Game();
+		games.add(game);
+		game.setStartLocations();
 		
 	}
 }
