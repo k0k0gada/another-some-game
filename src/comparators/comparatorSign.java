@@ -1,6 +1,8 @@
-package players;
+package comparators;
 
 import java.util.Comparator;
+
+import players.Player;
 
 public class comparatorSign implements Comparator<Player> {
 

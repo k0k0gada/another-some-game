@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
 
+import comparators.comparatorName;
+import comparators.comparatorSign;
 import players.Player;
-import players.comparatorName;
-import players.comparatorSign;
 
 public class Game {
 	Board board;
