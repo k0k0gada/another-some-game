@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
@@ -10,7 +11,7 @@ import comparators.comparatorSign;
 import players.Player;
 
 public class Game {
-	Board board;
+	private Board board;
 	private int numberOfPlayers;
 	TreeSet<Player> playersSign;
 	TreeSet<Player> playersName;
@@ -43,6 +44,10 @@ public class Game {
 				board = new Board();
 			}
 		} // board=Board.boardSelection();
+		for (Iterator<Player> it = players.iterator(); it.hasNext();) {
+			Player p = it.next();
+			p.setBoard(this.board);
+		}
 	}
 
 	private void setPlayers() {
@@ -99,8 +104,15 @@ public class Game {
 	}
 
 	public void setStartLocations() {
+		Collections.shuffle(players);
 		for (Iterator<Player> it = players.iterator(); it.hasNext();) {
 			Player pl = (Player) it.next();
+			System.out.println("Player " + pl.getName() + " choose a start location");
+			int []coord=board.enterCoord();
+			if(board.startLocationOK(coord)){
+				
+			}
+			
 			pl.setStartLocation();
 		}
 	}

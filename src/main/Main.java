@@ -34,6 +34,6 @@ public class Main {
 		Game game = new Game();
 		games.add(game);
 		game.setStartLocations();
-		
+
 	}
 }

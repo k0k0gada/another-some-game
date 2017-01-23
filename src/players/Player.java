@@ -2,7 +2,9 @@ package players;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 
+import main.Board;
 import main.Main;
 
 public class Player {
@@ -14,6 +16,7 @@ public class Player {
 	boolean human;
 	String name;
 	Character symbol;
+	Board board;
 	ArrayList<Units> army = new ArrayList<Units>();
 
 	public String getName() {
@@ -114,15 +117,32 @@ public class Player {
 
 	public static int numPlayers() {
 		int n;
-		do {
-			System.out.println("how many players do you want?(between " + MIN_PLAYERS + " and " + MAX_PLAYERS + ")");
-			n = Main.sc.nextInt();
-		} while (n < MIN_PLAYERS || n > MAX_PLAYERS);
+		while (true) {
+			try {
+				do {
+					System.out.println(
+							"how many players do you want?(between " + MIN_PLAYERS + " and " + MAX_PLAYERS + ")");
+					n = Main.sc.nextInt();
+				} while (n < MIN_PLAYERS || n > MAX_PLAYERS);
+				break;
+			} catch (InputMismatchException e) {
+				System.out.println("use numbers !");
+			}
+		}
 		Main.sc.nextLine();
 		return n;
 	}
 
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
 	public void setStartLocation() {
-		
+		System.out.println("choose start coordinates");
+
 	}
 }

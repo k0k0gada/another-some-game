@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Board {
 	private static final int MAX_SIZE = 15;
@@ -120,5 +121,55 @@ public class Board {
 				}
 			}
 		}
+	}
+
+	public int[] enterCoord() {
+		int[] coord = new int[2];
+		System.out.println("choose coordinates :");
+		while (true) {
+			try {
+				do {
+					System.out.println("enter coordinate from x axis:");
+					coord[0] = Main.sc.nextInt();
+					if (!isIntFromX(coord[0])) {
+						System.err.println(coord[0] + " is not from the X axis");
+					}
+				} while (isIntFromX(coord[0]));
+				do {
+					System.out.println("enter coordinate from y axis:");
+					coord[0] = Main.sc.nextInt();
+					if (!isIntFromY(coord[1])) {
+						System.err.println(coord[0] + " is not from the Y axis");
+					}
+				} while (isIntFromY(coord[1]));
+
+				break;
+			} catch (InputMismatchException e) {
+				System.out.println("use numbers!!!!");
+			}
+		}
+		System.out.println("choose coordinates :");
+		return coord;
+	}
+
+	public boolean isIntFromX(int x) {
+		if (x <= this.board.length - 2 && x > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isIntFromY(int y) {
+		if (y <= this.board[1].length - 1 && y > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean startLocationOK(int[] coord) {
+		if (this.board[coord[0]][coord[1]].equals("   ")) {
+			return true;
+		}
+		return false;
 	}
 }
